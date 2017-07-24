@@ -4,7 +4,7 @@ Vue.use(require('vue-resource'));
 import App from './components/App.vue'
 
 // Set up jQuery and auxiliary libs 
-window.$ = window.jQuery = require('jquery');
+// window.$ = window.jQuery = require('jquery');
 
 // Set up config
 const vueConfig = require('vue-config');

@@ -28,6 +28,9 @@
                 dragged: null
             }
         },
+        created: function () {
+            window.addEventListener('keyup', this.onKeyUp)
+        },
         computed: {
             // a computed getter
             lastX: function () {
@@ -37,10 +40,10 @@
                 return this.canvas.height / 2
             }
         },
-        created: function () {
-            this.updateImage();
-        },
         mounted: function () {
+
+
+
             this.canvas = this.$el.getElementsByTagName('canvas')[0];
             // Set the canvas to the parent element width / height
             this.canvas.width = this.$el.clientWidth;
@@ -207,6 +210,13 @@
             onZoomOut: function () {
                 this.zoom(-1);
             },
+            onKeyUp: function(e){
+             if(e.key == 'ArrowLeft' || e.keyCode == 37){
+                this.rotate(-1)
+             }else if(e.key == 'ArrowRight' || e.keyCode == 39){
+                this.rotate(1)
+             }
+            }
         }
     }
 </script>

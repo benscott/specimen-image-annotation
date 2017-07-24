@@ -27,6 +27,7 @@
             ImageViewer
         },
         mounted: function () {
+          console.log('mounted');
           this.loadSpecimen();
         },
         methods: {
