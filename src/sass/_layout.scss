@@ -5,6 +5,14 @@
     padding-right: 15px;
 }
 
+body, html, .row, #app, .col-sm-9{
+    height: 100%;
+}
+
+.container-full-width{
+    height: calc(100% - 100px);
+}
+
 body{
     background: $grey;
 }
@@ -57,10 +65,9 @@ h1{
 }
 
 #loading{
-    text-align: center;
-    margin-top: 200px;
-    margin-left: 50px;
-    i{
-        font-size: 40px;
-    }
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    color: #fff;
 }
+

@@ -1,7 +1,10 @@
 <template>
     <div id="app">
+        <div id="loading" v-if="loading">
+            <icon name="spinner" scale="2" class="fa-spin"></icon>
+        </div>
         <div class="col-sm-9">
-            <image-viewer :url="url"></image-viewer>
+            <image-viewer :url="url" v-on:imageLoaded="onImageLoaded"></image-viewer>
          </div>
         <div class="col-sm-3">
             <h1>{{ barcode }}</h1>
@@ -29,8 +32,8 @@
         },
         methods: {
             loadSpecimen: function() {
+                this.loading = true;
                 this.$http.get(this.$config.api + '/not-transcribed').then(response => {
-
                         console.log("Record loaded");
                         this.url = response.body.record.url;
                         this.barcode = response.body.record.barcode;
@@ -55,6 +58,9 @@
             onSubmit: function(model) {
                 this.saveSpecimen(model.country);
                 console.log("LOAD");
+            },
+            onImageLoaded: function(){
+              this.loading = false;
             }
         },
         data () {
@@ -62,6 +68,7 @@
                 url: null,
                 barcode: null,
                 _id: null,
+                loading: true,
                 model: {
                     country: null
                 },

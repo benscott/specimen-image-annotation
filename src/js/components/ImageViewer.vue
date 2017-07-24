@@ -14,6 +14,7 @@
         props: ['url'],
           watch : {
             url : function () {
+              console.log('URL Changed');
               this.resetAllTransformations();
               this.updateImage();
             }
@@ -30,6 +31,7 @@
         },
         created: function () {
             window.addEventListener('keyup', this.onKeyUp)
+            this.updateImage();
         },
         computed: {
             // a computed getter
@@ -51,10 +53,13 @@
         // define methods under the `methods` object
         methods: {
             updateImage: function(){
-                this.image.src = this.url;
-                this.image.onload = function () {
-                    this.redraw();
-                }.bind(this);
+                if(this.url){
+                    this.image.src = this.url;
+                    this.image.onload = function () {
+                        this.$emit('imageLoaded');
+                        this.redraw();
+                    }.bind(this);
+                }
             },
             resetAllTransformations: function(){
               this.ctx.setTransform(1, 0, 0, 1, 0, 0);
@@ -224,7 +229,7 @@
     $button-offset: 7px;
 
     #image-viewer-wrapper {
-        height: 500px;
+        height: 100%;
         position: relative;
         button{
             position: absolute;
