@@ -1,10 +1,7 @@
 <template>
     <div id="app">
         <div class="col-sm-9">
-            <div id="loading" v-if="loading">
-                <icon name="floppy-o" scale="8"></icon>
-            </div>
-            <image-viewer :url="url" v-else></image-viewer>
+            <image-viewer :url="url"></image-viewer>
          </div>
         <div class="col-sm-3">
             <h1>{{ barcode }}</h1>
@@ -33,11 +30,11 @@
         methods: {
             loadSpecimen: function() {
                 this.$http.get(this.$config.api + '/not-transcribed').then(response => {
+
                         console.log("Record loaded");
                         this.url = response.body.record.url;
                         this.barcode = response.body.record.barcode;
                         this._id = response.body.record._id;
-                        this.loading = false;
                     }, response => {
                       console.log('Fetch Failed');
                 });
@@ -48,7 +45,6 @@
                     barcode: this.barcode,
                     url: this.url,
                 };
-                this.loading = true;
                 this.$http.put(this.$config.api + '/' + this._id + '/', data).then(response => {
                         console.log('SAVED RECORD');
                         this.loadSpecimen();
@@ -63,7 +59,6 @@
         },
         data () {
             return {
-                loading: false,
                 url: null,
                 barcode: null,
                 _id: null,
@@ -349,7 +344,6 @@
                     validateAfterChanged: true,
                 }
             }
-
         }
     }
 </script>

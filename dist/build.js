@@ -13851,9 +13851,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
 
 
 
@@ -13872,11 +13869,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         loadSpecimen: function () {
             this.$http.get(this.$config.api + '/not-transcribed').then(response => {
+
                 console.log("Record loaded");
                 this.url = response.body.record.url;
                 this.barcode = response.body.record.barcode;
                 this._id = response.body.record._id;
-                this.loading = false;
             }, response => {
                 console.log('Fetch Failed');
             });
@@ -13887,7 +13884,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 barcode: this.barcode,
                 url: this.url
             };
-            this.loading = true;
             this.$http.put(this.$config.api + '/' + this._id + '/', data).then(response => {
                 console.log('SAVED RECORD');
                 this.loadSpecimen();
@@ -13902,7 +13898,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data() {
         return {
-            loading: false,
             url: null,
             barcode: null,
             _id: null,
@@ -13953,6 +13948,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: ['url'],
     watch: {
         url: function () {
+            console.log("HEY");
             this.resetAllTransformations();
             this.updateImage();
         }
@@ -13980,7 +13976,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     mounted: function () {
-
         this.canvas = this.$el.getElementsByTagName('canvas')[0];
         // Set the canvas to the parent element width / height
         this.canvas.width = this.$el.clientWidth;
@@ -23739,16 +23734,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('div', {
     staticClass: "col-sm-9"
-  }, [(_vm.loading) ? _c('div', {
-    attrs: {
-      "id": "loading"
-    }
-  }, [_c('icon', {
-    attrs: {
-      "name": "floppy-o",
-      "scale": "8"
-    }
-  })], 1) : _c('image-viewer', {
+  }, [_c('image-viewer', {
     attrs: {
       "url": _vm.url
     }

@@ -14,6 +14,7 @@
         props: ['url'],
           watch : {
             url : function () {
+                console.log("HEY");
               this.resetAllTransformations();
               this.updateImage();
             }
@@ -41,9 +42,6 @@
             }
         },
         mounted: function () {
-
-
-
             this.canvas = this.$el.getElementsByTagName('canvas')[0];
             // Set the canvas to the parent element width / height
             this.canvas.width = this.$el.clientWidth;
