@@ -24161,7 +24161,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data() {
         return {
-            loading: true,
+            loading: false,
             url: null,
             barcode: null,
             _id: null,

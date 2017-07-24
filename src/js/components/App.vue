@@ -62,7 +62,7 @@
         },
         data () {
             return {
-                loading: true,
+                loading: false,
                 url: null,
                 barcode: null,
                 _id: null,
