@@ -14,7 +14,6 @@
         props: ['url'],
           watch : {
             url : function () {
-                console.log("HEY");
               this.resetAllTransformations();
               this.updateImage();
             }

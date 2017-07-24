@@ -13948,7 +13948,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: ['url'],
     watch: {
         url: function () {
-            console.log("HEY");
             this.resetAllTransformations();
             this.updateImage();
         }
