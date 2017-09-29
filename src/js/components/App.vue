@@ -34,6 +34,7 @@
         methods: {
             loadSpecimen: function() {
                 this.loading = true;
+                console.log(this.$config.api);
                 this.$http.get(this.$config.api).then(response => {
                         console.log("Record loaded");
                         this.url = '/src/assets/slides/' + response.body.record.file_name;
