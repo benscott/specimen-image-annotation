@@ -28,7 +28,6 @@
             ImageViewer
         },
         mounted: function () {
-          console.log('mounted');
           this.loadSpecimen();
         },
         methods: {
@@ -37,7 +36,7 @@
                 console.log(this.$config.api);
                 this.$http.get(this.$config.api).then(response => {
                         console.log("Record loaded");
-                        this.url = '/src/assets/slides/' + response.body.record.file_name;
+                        this.url = '/src/assets/resized_slides/' + response.body.record.file_name;
                         this.barcode = response.body.record.barcode;
                         this._id = response.body.record._id;
                     }, response => {
