@@ -1,3 +1,3 @@
 module.exports = {
-  api: 'http://ckan-data-dev:5000/api/transcription'
+  api: 'http://192.168.2.1:5000/api/specimen/transcription'
 };
