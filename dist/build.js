@@ -10490,7 +10490,7 @@ module.exports = "data:application/vnd.ms-fontobject;base64,n04AAEFNAAACAAIABAAA
 /***/ (function(module, exports) {
 
 module.exports = {
-  api: 'http://127.0.0.1:5000/api/specimen/transcription'
+  api: 'http://ckan-data-dev.nhm.ac.uk/api/specimen/transcription'
 };
 
 /***/ }),
@@ -24142,6 +24142,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         loadSpecimen: function () {
             this.loading = true;
+            console.log(this.$config.api);
             this.$http.get(this.$config.api).then(response => {
                 console.log("Record loaded");
                 this.url = '/src/assets/slides/' + response.body.record.file_name;
