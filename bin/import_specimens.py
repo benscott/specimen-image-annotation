@@ -27,7 +27,7 @@ def main():
                 'barcode': barcode,
                 'file_name': f
             }
-            r = requests.post('http://127.0.0.1:5000/api/specimen/', json=specimen)
+            r = requests.post('http://74.50.49.136:5000/api/specimen/', json=specimen)
             r.raise_for_status()
 
 if __name__ == "__main__":
